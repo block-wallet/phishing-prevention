@@ -28,3 +28,10 @@ in a deterministic way depending on the provided uuid.
     size={300}
 />
 ```
+
+## Props
+
+| Prop                                                           | Required           | Type     | Description                                                                                                                                                                                                           |
+| -------------------------------------------------------------- | :------------------: | :--------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| uuid                                                           | :heavy_check_mark: | String   | A randomly generated uuid to use as seed for randomness and noise  
+| size                                                           | :x:                | Number   | The size of the canvas (defaults to the window size)
