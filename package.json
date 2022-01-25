@@ -4,7 +4,8 @@
   "description": "Phishing prevention library for Block Wallet",
   "main": "dist/index.js",
   "scripts": {
-    "build": "rm -rf ./dist && tsc"
+    "build": "rm -rf ./dist && tsc",
+    "postinstall": "yarn build"
   },
   "author": "",
   "license": "UNLICENSED",
