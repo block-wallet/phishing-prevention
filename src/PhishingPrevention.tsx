@@ -17,6 +17,8 @@ export type PhishingPreventionProps = {
   size?: number;
 };
 
+let sketch: ReturnType<typeof PhishingSketch> | undefined = undefined;
+
 /**
  * PhishingPrevention
  *
@@ -24,8 +26,10 @@ export type PhishingPreventionProps = {
  * on the provided uuid.
  */
 const PhishingPrevention = ({ uuid, size }: PhishingPreventionProps) => {
-  const { draw, setup } = PhishingSketch(uuid, size);
-  return <Sketch setup={setup} draw={draw} />;
+  if (!sketch) {
+    sketch = PhishingSketch(uuid, size);
+  }
+  return sketch && <Sketch setup={sketch.setup} draw={sketch.draw} />;
 };
 
 export default PhishingPrevention;
