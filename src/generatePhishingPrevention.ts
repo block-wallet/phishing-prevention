@@ -8,12 +8,12 @@ let p5Sketch: p5 | undefined = undefined;
  * generatePhishingPrevention
  *
  * @param uuid The uuid to use as seed for noise and randomness generation.
- * @param size The size of the object. It defaults to the screen size.
+ * @param size The size of the image.
  * @returns A base64 randomly generated anti-phishing image
  */
 export const generatePhishingPrevention = async (
   uuid: string,
-  size?: number
+  size: number
 ) => {
   const imagePromise = new Promise<string>((resolve) => {
     if (!sketch) {
@@ -25,6 +25,9 @@ export const generatePhishingPrevention = async (
         p.setup = () => sketch!.setup(p);
         p.draw = () => sketch!.draw(p, resolve);
       });
+
+      // We force draw as we'll render this on background side
+      p5Sketch.draw()
     }
   });
 

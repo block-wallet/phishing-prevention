@@ -19,17 +19,8 @@
     ```
 
 ## Usage
-By means of the following component, we can simply generate a random phishing prevention canva, that will be rendered on its parent component
-in a deterministic way depending on the provided uuid.
-
-```tsx
-<PhishingPrevention
-    uuid={"38cb4f4d-050c-4022-a315-4b5218e53800"}
-    size={300}
-/>
-```
-
-Also, a base64 string of the generated image can be obtained by calling the following function:
+Simply by calling the following function, we can generate a deterministically generated phishing prevention image in base64 format
+based on the provided uuid. This will allow us in the feature to let the user decide which phishing image to use based on the UUID seed.
 
 ```ts
 const base64ImageString = await generatePhishingPrevention("38cb4f4d-050c-4022-a315-4b5218e53800", 300)
@@ -40,4 +31,4 @@ const base64ImageString = await generatePhishingPrevention("38cb4f4d-050c-4022-a
 | Prop                                                           | Required           | Type     | Description                                                                                                                                                                                                           |
 | -------------------------------------------------------------- | :------------------: | :--------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | uuid                                                           | :heavy_check_mark: | String   | A randomly generated uuid to use as seed for randomness and noise  
-| size                                                           | :x:                | Number   | The size of the canvas (defaults to the window size)
+| size                                                           | :heavy_check_mark: | Number   | The size of the canvas
