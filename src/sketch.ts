@@ -12,6 +12,11 @@ const sketch = (uuid: string, size?: number) => {
   var RANDOM_SEED;
 
   /**
+   * The canvas object
+   */
+  var canvas: p5Types.Renderer;
+
+  /**
    * The size of the actual canvas in pixels.
    * @type {Number}
    * @constant
@@ -133,9 +138,14 @@ const sketch = (uuid: string, size?: number) => {
   /**
    * p5js setup function
    */
-  function setup(p5: p5Types, canvasParentRef: Element) {
-    SIZE = size || p5.min(p5.windowWidth, p5.windowHeight);
-    p5.createCanvas(SIZE, SIZE).parent(canvasParentRef);
+  function setup(p5: p5Types, canvasParentRef?: Element) {
+    SIZE = size || p5.min(p5.windowWidth, p5.windowHeight);
+
+    canvas = p5.createCanvas(SIZE, SIZE);
+    if (canvasParentRef) {
+      canvas.parent(canvasParentRef);
+    }
+
     RES_MULTIPLIER = SIZE / 800;
 
     NOISE_SEED = parseInt(uuid.replace(/-/g, "").slice(0, 13), 16); // p5.random(1000000000);
@@ -590,7 +600,7 @@ const sketch = (uuid: string, size?: number) => {
   /**
    * p5js draw function
    */
-  function draw(p5: p5Types) {
+  function draw(p5: p5Types, cb?: (base64Image: string) => void) {
     set_background(p5);
 
     p5.strokeWeight(strokeSize);
@@ -617,6 +627,11 @@ const sketch = (uuid: string, size?: number) => {
     CURVES_STYLES[selected_curve_style](p5, p5.PI / 2);
     apply_noise_texture(p5);
     // console.log("finished drawing");
+
+    if (cb) {
+      // Return base64 image
+      cb(canvas.elt.toDataURL());
+    }
 
     p5.noLoop();
   }
