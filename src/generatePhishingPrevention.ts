@@ -16,19 +16,15 @@ export const generatePhishingPrevention = async (
   size: number
 ) => {
   const imagePromise = new Promise<string>((resolve) => {
-    if (!sketch) {
-      sketch = PhishingSketch(uuid, size);
-    }
+    sketch = PhishingSketch(uuid, size);
 
-    if (!p5Sketch) {
-      p5Sketch = new p5((p) => {
-        p.setup = () => sketch!.setup(p);
-        p.draw = () => sketch!.draw(p, resolve);
-      });
+    p5Sketch = new p5((p) => {
+      p.setup = () => sketch!.setup(p);
+      p.draw = () => sketch!.draw(p, resolve);
+    });
 
-      // We force draw as we'll render this on background side
-      p5Sketch.draw()
-    }
+    // We force draw as we'll render this on background side
+    p5Sketch.draw()
   });
 
   const base64Image = await imagePromise;
