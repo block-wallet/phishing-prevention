@@ -150,6 +150,7 @@ const sketch = (uuid: string, size?: number) => {
 
     NOISE_SEED = parseInt(uuid.replace(/-/g, "").slice(0, 13), 16); // p5.random(1000000000);
     RANDOM_SEED = parseInt(uuid.replace(/-/g, "").slice(-13), 16); // p5.random(1000000000);
+    console.log(NOISE_SEED, RANDOM_SEED);
     p5.noiseSeed(NOISE_SEED);
     p5.randomSeed(RANDOM_SEED);
 
@@ -158,12 +159,12 @@ const sketch = (uuid: string, size?: number) => {
     setup_palettes(p5);
 
     const EXTRA = 0.2;
-    left_x = p5.floor(SIZE * -EXTRA);
-    right_x = p5.floor(SIZE * (1 + EXTRA));
-    top_y = p5.floor(SIZE * -EXTRA);
-    bottom_y = p5.floor(SIZE * (1 + EXTRA));
+    left_x = -160*RES_MULTIPLIER;
+    right_x = 960*RES_MULTIPLIER;
+    top_y = -160*RES_MULTIPLIER;
+    bottom_y = 960*RES_MULTIPLIER;
 
-    resolution = (right_x - left_x) * 0.01; // 1% of the width
+    resolution = 11.2*RES_MULTIPLIER; // 1% of the width
 
     num_columns = p5.round((right_x - left_x) / resolution);
     num_rows = p5.round((bottom_y - top_y) / resolution);
@@ -483,6 +484,276 @@ const sketch = (uuid: string, size?: number) => {
       p5.color(112, 103, 207),
       p5.color(183, 192, 238),
     ]);
+    palettes.push([
+        p5.color(226, 26, 95),
+        p5.color(251, 58, 87),
+        p5.color(288, 100, 70),
+        p5.color(301, 100, 49),
+    ]);
+    palettes.push([
+        p5.color(31, 38, 26),
+        p5.color(78, 49, 36),
+        p5.color(67, 7, 49),
+        p5.color(225, 4, 72),
+    ]);
+    palettes.push([
+        p5.color(342, 22, 31),
+        p5.color(347, 8, 43),
+        p5.color(60, 8, 62),
+        p5.color(83, 15, 84),
+    ]);
+    palettes.push([
+        p5.color(256, 46, 50),
+        p5.color(349, 28, 67),
+        p5.color(326, 53, 30),
+        p5.color(347, 60, 72),
+    ]);
+    palettes.push([
+        p5.color(51, 22, 93),
+        p5.color(63, 34, 87),
+        p5.color(36, 47, 92),
+        p5.color(16, 78, 87),
+    ]);
+    palettes.push([
+        p5.color(150, 1, 84),
+        p5.color(137, 18, 77),
+        p5.color(172, 13, 71),
+        p5.color(217, 12, 60),
+    ]);
+    palettes.push([
+        p5.color(6, 19, 84),
+        p5.color(342, 22, 81),
+        p5.color(339, 34, 41),
+        p5.color(11, 34, 25),
+    ]);
+    palettes.push([
+        p5.color(354, 62, 86),
+        p5.color(70, 6, 41),
+        p5.color(170, 15, 64),
+        p5.color(207, 41, 40),
+    ]);
+    palettes.push([
+        p5.color(137, 14, 85),
+        p5.color(189, 23, 79),
+        p5.color(205, 22, 69),
+        p5.color(88, 16, 31),
+    ]);
+    palettes.push([
+        p5.color(189, 68, 100),
+        p5.color(271, 98, 51),
+        p5.color(331, 77, 93),
+        p5.color(0, 35, 100),
+    ]);
+    palettes.push([
+        p5.color(236, 39, 100),
+        p5.color(258, 19, 75),
+        p5.color(23, 25, 62),
+        p5.color(30, 62, 48),
+    ]);
+    palettes.push([
+        p5.color(144, 23, 74),
+        p5.color(91, 26, 73),
+        p5.color(84, 48, 80),
+        p5.color(42, 50, 50),
+    ]);
+    palettes.push([
+        p5.color(27, 97, 15),
+        p5.color(330, 100, 28),
+        p5.color(292, 76, 40),
+        p5.color(211, 67, 52),
+    ]);
+    palettes.push([
+        p5.color(191, 24, 78),
+        p5.color(160, 14, 59),
+        p5.color(29, 20, 81),
+        p5.color(19, 18, 91),
+    ]);
+    palettes.push([
+        p5.color(152, 100, 6),
+        p5.color(182, 50, 22),
+        p5.color(10, 8, 30),
+        p5.color(142, 4, 100),
+    ]);
+    palettes.push([
+        p5.color(65, 5, 97),
+        p5.color(8, 76, 91),
+        p5.color(203, 12, 25),
+        p5.color(207, 68, 77),
+    ]);
+    palettes.push([
+        p5.color(7, 66, 94),
+        p5.color(7, 52, 95),
+        p5.color(6, 38, 97),
+        p5.color(7, 25, 98),
+    ]);
+    palettes.push([
+        p5.color(300, 100, 0),
+        p5.color(2, 91, 17),
+        p5.color(28, 100, 53),
+        p5.color(30, 98, 74),
+    ]);
+    palettes.push([
+        p5.color(270, 2, 76),
+        p5.color(256, 9, 46),
+        p5.color(265, 19, 24),
+        p5.color(45, 71, 87),
+    ]);
+    palettes.push([
+        p5.color(32, 100, 36),
+        p5.color(27, 57, 40),
+        p5.color(43, 27, 45),
+        p5.color(145, 13, 53),
+    ]);
+    palettes.push([
+        p5.color(126, 83, 50),
+        p5.color(133, 59, 73),
+        p5.color(170, 32, 92),
+        p5.color(224, 30, 52),
+    ]);
+    palettes.push([
+        p5.color(252, 24, 100),
+        p5.color(240, 26, 95),
+        p5.color(311, 17, 86),
+        p5.color(334, 33, 81),
+    ]);
+    palettes.push([
+        p5.color(352, 6, 96),
+        p5.color(275, 12, 88),
+        p5.color(254, 20, 78),
+        p5.color(283, 24, 63),
+    ]);
+    palettes.push([
+        p5.color(13, 13, 98),
+        p5.color(30, 10, 90),
+        p5.color(347, 22, 49),
+        p5.color(341, 32, 46),
+    ]);
+    palettes.push([
+        p5.color(347, 28, 39),
+        p5.color(353, 31, 67),
+        p5.color(21, 38, 84),
+        p5.color(16, 47, 100),
+    ]);
+    palettes.push([
+        p5.color(13, 24, 40),
+        p5.color(245, 21, 62),
+        p5.color(145, 35, 76),
+        p5.color(94, 42, 94),
+    ]);
+    palettes.push([
+        p5.color(209, 87, 40),
+        p5.color(48, 19, 98),
+        p5.color(47, 61, 96),
+        p5.color(28, 68, 93),
+    ]);
+    palettes.push([
+        p5.color(187, 38, 86),
+        p5.color(241, 54, 86),
+        p5.color(236, 83, 82),
+        p5.color(224, 76, 26),
+    ]);
+    palettes.push([
+        p5.color(194, 98, 21),
+        p5.color(243, 49, 30),
+        p5.color(274, 49, 63),
+        p5.color(319, 29, 82),
+    ]);
+    palettes.push([
+        p5.color(251, 32, 35),
+        p5.color(165, 17, 77),
+        p5.color(102, 16, 84),
+        p5.color(71, 18, 94),
+    ]);
+    palettes.push([
+        p5.color(94, 30, 96),
+        p5.color(88, 24, 82),
+        p5.color(221, 19, 62),
+        p5.color(219, 65, 50),
+    ]);
+    palettes.push([
+        p5.color(209, 59, 27),
+        p5.color(145, 20, 44),
+        p5.color(99, 34, 63),
+        p5.color(80, 30, 85),
+    ]);
+    palettes.push([
+        p5.color(81, 29, 96),
+        p5.color(101, 36, 88),
+        p5.color(56, 42, 80),
+        p5.color(63, 52, 67),
+    ]);
+    palettes.push([
+        p5.color(59, 49, 100),
+        p5.color(18, 56, 100),
+        p5.color(355, 69, 91),
+        p5.color(20, 62, 71),
+    ]);
+    palettes.push([
+        p5.color(166, 14, 98),
+        p5.color(163, 24, 63),
+        p5.color(80, 67, 33),
+        p5.color(99, 47, 55),
+    ]);
+    palettes.push([
+        p5.color(110, 83, 12),
+        p5.color(154, 100, 31),
+        p5.color(329, 43, 85),
+        p5.color(351, 26, 98),
+    ]);
+    palettes.push([
+        p5.color(309, 82, 15),
+        p5.color(41, 40, 93),
+        p5.color(50, 32, 86),
+        p5.color(68, 16, 78),
+    ]);
+    palettes.push([
+        p5.color(348, 38, 100),
+        p5.color(348, 12, 98),
+        p5.color(192, 96, 100),
+        p5.color(166, 44, 67),
+    ]);
+    palettes.push([
+        p5.color(211, 79, 82),
+        p5.color(76, 98, 80),
+        p5.color(47, 99, 93),
+        p5.color(23, 100, 96),
+    ]);
+    palettes.push([
+        p5.color(7, 50, 79),
+        p5.color(40, 40, 74),
+        p5.color(72, 28, 69),
+        p5.color(107, 47, 64),
+    ]);
+    palettes.push([
+        p5.color(22, 64, 92),
+        p5.color(5, 65, 78),
+        p5.color(4, 79, 68),
+        p5.color(358, 82, 51),
+    ]);
+    palettes.push([
+        p5.color(45, 100, 95),
+        p5.color(39, 100, 98),
+        p5.color(32, 98, 90),
+        p5.color(23, 100, 100),
+    ]);
+    palettes.push([
+        p5.color(206, 28, 10),
+        p5.color(148, 37, 28),
+        p5.color(153, 93, 51),
+        p5.color(51, 31, 74),
+    ]);
+    palettes.push([
+        p5.color(356, 82, 87),
+        p5.color(132, 28, 73),
+        p5.color(58, 24, 96),
+        p5.color(27, 51, 87),
+    ]);
+    palettes.push([
+        p5.color(190, 82, 48),
+        p5.color(192, 60, 71),
+        p5.color(190, 36, 80),
+        p5.color(24, 4, 93),
+    ]);
 
     selected_palette = p5.floor(p5.random(palettes.length));
   }
@@ -540,6 +811,9 @@ const sketch = (uuid: string, size?: number) => {
     if (selected_color_style == "BW") {
       strokeSize *= p5.random(0.2, 0.3);
       isShadowed = false;
+    }
+    if(!isShapes) {
+        isColorPerShape = false;
     }
 
     // console.log("strokeSize: ", strokeSize);
@@ -688,8 +962,8 @@ const sketch = (uuid: string, size?: number) => {
       strokeSize,
       MIN_STROKE_SIZE * RES_MULTIPLIER,
       MAX_STROKE_SIZE * RES_MULTIPLIER,
-      4,
-      50
+      20*RES_MULTIPLIER,
+      100*RES_MULTIPLIER
     );
     // console.log("poisson distance: " + r);
     var poisson_grid: (p5Types.Vector | undefined)[] = [];
@@ -718,7 +992,7 @@ const sketch = (uuid: string, size?: number) => {
       var pos = active[randIndex];
       var found = false;
       for (var n = 0; n < k; n++) {
-        var sample = p5Types.Vector.random2D();
+        var sample = p5Types.Vector.fromAngle(p5.random(0, 2*p5.PI));
         var m = p5.random(r, 2 * r);
         sample.setMag(m);
         // sample.add(pos); // NOTE: This was changed to x,y,z API due to error on generation
@@ -768,10 +1042,10 @@ const sketch = (uuid: string, size?: number) => {
 
     for (var i = 0; i < ordered.length; i++) {
       if (ordered[i]) {
+        set_color(p5, ordered[i].x, ordered[i].y, i);
         var x = ordered[i].x;
         var y = ordered[i].y;
         if (isCurl) {
-          set_color(p5, ordered[i].x, ordered[i].y, i);
           draw_curl(p5, ordered[i].x, ordered[i].y);
         } else {
           if (p5.random() < 0.5 && isCrossed) {
@@ -790,18 +1064,7 @@ const sketch = (uuid: string, size?: number) => {
    */
   function random_curves(p5: p5Types, angleOffset: number = 0) {
     var n: number;
-    if (isShapes) {
-      n = 2000 / strokeSize + 50;
-    } else {
-      n = 5000 / strokeSize;
-    }
-    n = p5.map(
-      strokeSize * RES_MULTIPLIER,
-      MAX_STROKE_SIZE * RES_MULTIPLIER,
-      MIN_STROKE_SIZE * RES_MULTIPLIER,
-      200,
-      2000
-    );
+    n = p5.map(strokeSize/RES_MULTIPLIER, MAX_STROKE_SIZE, MIN_STROKE_SIZE, 200, 2000);
     // console.log("random curves number:", n);
     for (var i = 0; i < n; i++) {
       if (isCurl) {
@@ -917,15 +1180,15 @@ const sketch = (uuid: string, size?: number) => {
     num_steps: number = 20,
     mul: number = 5
   ) {
-    num_steps = p5.floor(strokeSize + 10);
+    num_steps = p5.floor(strokeSize/RES_MULTIPLIER + 10);
     p5.curveTightness(0);
     p5.beginShape();
     for (var i = 0; i < num_steps; i++) {
       p5.curveVertex(x, y);
       var curl = calc_curl(p5, x, y);
       if (curl == -1) break;
-      x += curl[0] * mul;
-      y += curl[1] * mul;
+      x += curl[0] * mul * RES_MULTIPLIER;
+      y += curl[1] * mul * RES_MULTIPLIER;
     }
     p5.endShape();
   }
@@ -943,12 +1206,12 @@ const sketch = (uuid: string, size?: number) => {
   function spaced_curves(
     p5: p5Types,
     angleOffset,
-    sep: number = strokeSize * 2.5 + 2 * RES_MULTIPLIER,
+    sep: number = strokeSize * 2.5,
     start: any = null,
     seed_every: number = 2,
     min_distance: any = null,
-    step_length: number = 8,
-    min_curve_length: number = 50,
+    step_length: number = 8*RES_MULTIPLIER,
+    min_curve_length: number = 50*RES_MULTIPLIER,
     max_iterations: number = 2000
   ) {
     if (selected_color_style == "BW") {
@@ -977,7 +1240,7 @@ const sketch = (uuid: string, size?: number) => {
     var i = 0;
 
     while (seedpoints.length > 0) {
-      const index = Math.floor(Math.random() * seedpoints.length);
+      const index = p5.floor(p5.random() * seedpoints.length);
       const [[x, y]] = seedpoints.splice(index, 1);
 
       const coords = get_grid_coords(p5, x, y, grid, resolution, left_x, top_y);
@@ -1039,7 +1302,7 @@ const sketch = (uuid: string, size?: number) => {
                 step_length,
                 min_curve_length,
                 seed_every,
-                i
+                -1
               );
               p5.pop();
             }
@@ -1062,9 +1325,9 @@ const sketch = (uuid: string, size?: number) => {
             seedpoints.push(
               ...new_seedpoints.filter(
                 (p) =>
-                  inside_screen(p, p[0], p[1]) &&
+                  inside_screen(p5, p[0], p[1]) &&
                   check_collision(
-                    p,
+                    p5,
                     p[0],
                     p[1],
                     collision_grid,
@@ -1075,7 +1338,6 @@ const sketch = (uuid: string, size?: number) => {
                   )
               )
             );
-            i++;
             // Insert collision points into the collision grid
             for (const [newX, newY] of new_collision_points) {
               // Notice that we use grid_left_x = 0 and grid_top_y = 0 because the collision grid is already shifted
@@ -1103,6 +1365,7 @@ const sketch = (uuid: string, size?: number) => {
             }
           }
         }
+        i++;
       }
 
       count++;
@@ -1184,9 +1447,61 @@ const sketch = (uuid: string, size?: number) => {
         // Add an EXTRA vertex at the beginning and end (which p5.js will use to
         // determine the direction)
         if (i == 0 || i == merged_curve_points.length - 1) {
-          p5.curveVertex(x, y);
+          if (!isShapes) {
+            p5.curveVertex(x, y);
+          } else if (isShapes == 'circle') {
+            if (isColorPerShape) {
+              set_color(p5, x, y, curve_i)
+            }
+            p5.strokeWeight(1 * RES_MULTIPLIER)
+            if(curve_i != -1) {
+              p5.circle(x, y, strokeSize);
+            }
+          } else if (isShapes == 'rect') {
+            p5.rectMode(p5.CENTER);
+            if (isColorPerShape) {
+              set_color(p5, x, y, curve_i)
+            }
+            if(curve_i == -1) {
+              p5.fill(100, 100, 0, 0.3)
+              p5.stroke(100, 100, 0, 0.3)
+            }
+            p5.push()
+            p5.translate(x, y)
+            if (i != 0 && curve_i != -1) {
+              p5.rect(0, 0, strokeSize, strokeSize);
+            }
+            p5.pop()
+          }
         }
-        p5.curveVertex(x, y);
+        if (!isShapes) {
+          p5.curveVertex(x, y);
+        } else if (isShapes == 'circle') {
+          if (isColorPerShape) {
+            set_color(p5, x, y, curve_i)
+          }
+          if(curve_i == -1) {
+            p5.fill(100, 100, 0, 0.3)
+            p5.stroke(100, 100, 0, 0.3)
+          }
+          p5.strokeWeight(1 * RES_MULTIPLIER)
+          p5.circle(x, y, strokeSize);
+        } else if (isShapes == 'rect') {
+          p5.strokeWeight(1 * RES_MULTIPLIER)
+          p5.rectMode(p5.CENTER);
+          if (isColorPerShape) {
+            set_color(p5, x, y, curve_i)
+          }
+          if(curve_i == -1) {
+            p5.fill(100, 100, 0, 0.3)
+          }
+          p5.push()
+          p5.translate(x, y)
+          if (i != 0) {
+            p5.rect(0, 0, strokeSize, strokeSize);
+          }
+          p5.pop()
+        }
       }
       p5.endShape();
 
@@ -1300,7 +1615,8 @@ const sketch = (uuid: string, size?: number) => {
    * @returns True if and only if the point is inside the screen
    */
   function inside_screen(p5: p5Types, x: any, y: any) {
-    return x > 0 && x < p5.width && y > 0 && y < p5.height;
+    var eps: number = 0.001*RES_MULTIPLIER;
+    return x - eps > 0 && x + eps < p5.width && y - eps > 0 && y + eps < p5.height;
   }
 
   /**
@@ -1370,7 +1686,8 @@ const sketch = (uuid: string, size?: number) => {
       var h = bottom_y - top_y;
       var n = p.length;
       var step = h / n;
-      var i = p5.floor((y + p5.random(-200, 200) - top_y) / step);
+      var r = p5.random(-SIZE/2, SIZE/2);
+      var i = p5.floor(p5.map(y+r, top_y, bottom_y, 0, n));
       if (i < 0) i = 0;
       var color = p[i];
       if (color) {
@@ -1435,7 +1752,7 @@ const sketch = (uuid: string, size?: number) => {
     angleOffset: number = 0
   ) {
     var i = 0;
-    var num_steps = p5.floor(5.8 * strokeSize + 108);
+    var num_steps = p5.floor(5.8 * strokeSize/RES_MULTIPLIER + 108);
 
     if (isShadowed && curve_i != -1) {
       draw_shadow(p5, x, y, -1, angleOffset);
@@ -1483,7 +1800,7 @@ const sketch = (uuid: string, size?: number) => {
     var step_length = p5.width / 1000;
 
     if (isShapes) {
-      step_length = 0.2 * strokeSize + 3;
+      step_length = 0.2 * strokeSize + 3*RES_MULTIPLIER;
     }
 
     p5.curveTightness(0);
