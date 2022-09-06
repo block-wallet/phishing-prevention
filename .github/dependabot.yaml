@@ -1,0 +1,15 @@
+version: 2
+updates:
+  # Maintain dependencies for npm in ui
+  - package-ecosystem: "npm"
+    schedule:
+      interval: "daily"
+    commit-message:
+      # Prefix all commit messages with "npm"
+      prefix: "chore: "
+      include: "scope"
+    labels:
+      - "npm"
+      - "dependencies"
+    reviewers:
+      - "block-wallet/backgroundreviewers"
